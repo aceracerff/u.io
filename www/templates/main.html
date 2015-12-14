@@ -19,11 +19,11 @@
           </button>
         </div>
       </a>
-      <div class="list list-inset">
-        <label class="item item-input">
+      <div style="border-top:3px solid lightgray;" class="row">
+        <label style="margin-right: 10px;" class="item item-input">
           <input type="number" placeholder="Item Quantity" ng-model="userqty">
         </label>
-        <label class="item item-input">
+        <label style="margin-right: 10px" class="item item-input">
           <input type="text" placeholder="Item Name" ng-model="useritem">
         </label>
         <a class="button button-outline icon-right ion-checkmark-round button-balanced" ng-click="addItem(userqty, useritem, friend, true)">Submit</a>
@@ -35,9 +35,10 @@
         {{friend}} owes me:
       </div>
       <a ng-repeat="(key,item) in itemsFriendOwes"
-         class="item item-button-right">
+         class="item item-button-right"
+         ng-if="item.to == authedUserInfo.name">
         {{item.qty}}x {{item.name}}
-        <div class="buttons" ng-if="item.to == authedUserInfo.name">
+        <div class="buttons">
           <button class="button button-balanced" ng-click="updateQuantity(key, item.qty+1, false);">
             <i class="icon ion-plus-round" ></i>
           </button>
@@ -49,14 +50,14 @@
           </button>
         </div>
       </a>
-      <div class="list list-inset">
-        <label class="item item-input">
-          <input type="number" placeholder="Item Quantity" ng-model="qty">
+      <div style="border-top:3px solid lightgray;" class="row">
+        <label style="margin-right: 10px;" class="item item-input">
+          <input type="number" placeholder="Item Quantity" ng-model="userqty">
         </label>
-        <label class="item item-input">
-          <input type="text" placeholder="Item Name" ng-model="item">
+        <label style="margin-right: 10px" class="item item-input">
+          <input type="text" placeholder="Item Name" ng-model="useritem">
         </label>
-        <a class="button button-outline icon-right ion-checkmark-round button-balanced" ng-click="addItem(qty, item, authedUserInfo.name, false)">Submit</a>
+        <a class="button button-outline icon-right ion-checkmark-round button-balanced" ng-click="addItem(userqty, useritem, friend, true)">Submit</a>
       </div>
     </div>
   </ion-content>
