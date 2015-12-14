@@ -5,9 +5,9 @@
         Items that I owe {{friend}}:
       </div>
       <a ng-repeat="(key,item) in itemsUserOwes"
-         class="item item-button-right">
-        <div class="buttons" ng-if="item.to == friend">
-          {{item.qty}}x {{item.name}}
+         class="item item-button-right" ng-if="item.to==friend">
+        {{item.qty}}x {{item.name}}
+        <div class="buttons">
           <button class="button button-balanced" ng-click="updateQuantity(key, item.qty+1, true);">
             <i class="icon ion-plus-round" ></i>
           </button>
@@ -36,8 +36,8 @@
       </div>
       <a ng-repeat="(key,item) in itemsFriendOwes"
          class="item item-button-right">
+        {{item.qty}}x {{item.name}}
         <div class="buttons" ng-if="item.to == authedUserInfo.name">
-          <h2>{{item.qty}}x {{item.name}}</h2>
           <button class="button button-balanced" ng-click="updateQuantity(key, item.qty+1, false);">
             <i class="icon ion-plus-round" ></i>
           </button>
@@ -61,34 +61,3 @@
     </div>
   </ion-content>
 </ion-view>
-
-
-
-
-<!--<div class="col-xs-6">-->
-  <!--I Owe {{friend}}:-->
-  <!--<div ng-repeat="(key,item) in itemsUserOwes">-->
-    <!--<div ng-if="item.to == friend">{{item.qty}}x {{item.name}}-->
-      <!--<span ng-click="updateQuantity(key, item.qty+1, true);" style="color:green">|+|</span><span> </span>-->
-      <!--<span ng-click="updateQuantity(key, item.qty-1, true);" style="color:dodgerblue">|-|</span><span> </span>-->
-      <!--<span ng-click="removeItem(key, true);" style="color:red; font-style:italic">|X|</span><span> </span>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--Quantity:<input ng-model="userqty">Item:<input ng-model="useritem">-->
-  <!--<button ng-click="addItem(userqty, useritem, friend, true)">Add Items</button>-->
-<!--</div>-->
-
-
-
-<!--<div class="col-xs-6">-->
-  <!--{{friend}} owes me:-->
-  <!--<div ng-repeat="(key,item) in itemsFriendOwes">-->
-    <!--<div ng-if="item.to == 'Jordan'">{{item.qty}}x {{item.name}}-->
-      <!--<span ng-click="updateQuantity(key, item.qty+1, false);" style="color:green">|+|</span><span> </span>-->
-      <!--<span ng-click="updateQuantity(key, item.qty-1, false);" style="color:dodgerblue">|-|</span><span> </span>-->
-      <!--<span ng-click="removeItem(key, false);" style="color:red; font-style:italic">|X|</span><span> </span>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--Quantity:<input ng-model="qty">Item:<input ng-model="item">-->
-  <!--<button ng-click="addItem(qty, item, 'Jordan', false)">Add Items</button>-->
-<!--</div>-->
