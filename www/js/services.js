@@ -60,7 +60,7 @@ angular.module('starter.services', [])
         User.set(authData.google.email, authData.google.displayName, authData.google.profileImageURL);
       }
       else{
-        auth.$authWithOAuthRedirect("google");
+        auth.$authWithOAuthRedirect("google", {scope: 'email'});
       }
     });
   }

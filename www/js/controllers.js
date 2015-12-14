@@ -3,9 +3,8 @@ angular.module('starter.controllers', [])
 .controller('NavCtrl', function($scope, User, $firebaseObject, $state) {
   var ref = new Firebase('https://jordansdemo.firebaseio.com/users');
   var obj = $firebaseObject(ref);
-  $scope.authedUserInfo = User.get();
-  $scope.$on('AUTHED-USER-DATA-READY', function () {
-    $scope.authedUserInfo = User.get();
+
+  var checkIfNewUser = function(){
     var userExists = false;
     obj.$loaded().then(function () {
       $scope.users = obj;
@@ -21,6 +20,21 @@ angular.module('starter.controllers', [])
         });
       }
     });
+  };
+
+  //In case NavCtrl isn't ready in time for broadcast
+  $scope.authedUserInfo = User.get();
+  console.log($scope.authedUserInfo);
+  if($scope.authedUserInfo.name != null){
+    console.log("user already authed. checking if new user...");
+    checkIfNewUser();
+  }
+
+  //In case NavCtrl is loaded before broadcast
+  $scope.$on('AUTHED-USER-DATA-READY', function () {
+    console.log("broadcast received. checking if new user...");
+    $scope.authedUserInfo = User.get();
+    checkIfNewUser();
   });
 
   ref.on('value', function (snapshot) {
