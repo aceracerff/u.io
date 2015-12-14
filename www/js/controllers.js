@@ -108,13 +108,14 @@ angular.module('starter.controllers', [])
   };
 
   $scope.addItem = function(qty, item, user, addingItemsUserOwes)  {
+    console.log(user);
     if (addingItemsUserOwes) {
       var FBUsernewref = FBUserOwesRef.push();
       FBUsernewref.set({name: item, qty: parseInt(qty), to: user});
     }
     else {
       var FBnewref = FBFriendOwesRef.push();
-      FBnewref.set({name: item, qty: parseInt(qty), to: $scope.authedUserData.name});
+      FBnewref.set({name: item, qty: parseInt(qty), to: $scope.authedUserInfo.name});
     }
   };
 });
