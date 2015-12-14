@@ -1,0 +1,8 @@
+{
+  "firebase": "jordansdemo",
+  "public": "./www",
+  "ignore": [
+    "firebase.json",
+    "**/node_modules/**"
+  ]
+}
