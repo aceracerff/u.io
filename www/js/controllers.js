@@ -5,7 +5,6 @@ angular.module('starter.controllers', [])
   var obj = $firebaseObject(ref);
   $scope.$on('AUTHED-USER-DATA-READY', function () {
     $scope.authedUserInfo = User.get();
-
     var userExists = false;
     obj.$loaded().then(function () {
       $scope.users = obj;

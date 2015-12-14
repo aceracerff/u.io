@@ -42,7 +42,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       templateUrl: 'templates/main.html',
       controller: 'MainCtrl',
       params: {
-        friend: null,
+        friend: null
       }
     })
 

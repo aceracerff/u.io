@@ -55,11 +55,13 @@ angular.module('starter.services', [])
 
     var authRef = new Firebase("https://jordansdemo.firebaseio.com");
     var auth = $firebaseAuth(authRef);
-
-    auth.$authWithOAuthPopup("google", { scope: 'email' }).then(function(authData) {
-      User.set(authData.google.email, authData.google.displayName, authData.google.profileImageURL);
-    }).catch(function(error) {
-      console.error("Authentication failed:", error);
+    auth.$onAuth(function(authData){
+      if(authData){
+        User.set(authData.google.email, authData.google.displayName, authData.google.profileImageURL);
+      }
+      else{
+        auth.$authWithOAuthRedirect("google");
+      }
     });
   }
 })

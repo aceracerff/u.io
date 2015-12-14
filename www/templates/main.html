@@ -21,12 +21,12 @@
       </a>
       <div class="list list-inset">
         <label class="item item-input">
-          <input type="number" placeholder="Item Quantity" ng-model="qty">
+          <input type="number" placeholder="Item Quantity" ng-model="userqty">
         </label>
         <label class="item item-input">
-          <input type="text" placeholder="Item Name" ng-model="item">
+          <input type="text" placeholder="Item Name" ng-model="useritem">
         </label>
-      <a class="button button-outline icon-right ion-checkmark-round button-balanced" ng-click="addItem(qty, item, friend, true)">Submit</a>
+        <a class="button button-outline icon-right ion-checkmark-round button-balanced" ng-click="addItem(userqty, useritem, friend, true)">Submit</a>
       </div>
       </div>
 
@@ -49,6 +49,15 @@
           </button>
         </div>
       </a>
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="number" placeholder="Item Quantity" ng-model="qty">
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Item Name" ng-model="item">
+        </label>
+        <a class="button button-outline icon-right ion-checkmark-round button-balanced" ng-click="addItem(qty, item, authedUserInfo.name, false)">Submit</a>
+      </div>
     </div>
   </ion-content>
 </ion-view>
