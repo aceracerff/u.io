@@ -1,0 +1,64 @@
+<ion-view title="Transaction Summary: {{friend}}">
+  <ion-content>
+    <div class="list">
+      <div class="item item-divider">
+        I owe {{friend}}:
+      </div>
+      <a ng-repeat="(key,item) in itemsUserOwes"
+         class="item item-button-right" ng-if="item.to==friend">
+        {{item.qty}}x {{item.name}}
+        <div class="buttons">
+          <button class="button button-balanced" ng-click="updateQuantity(key, item.qty+1, true);">
+            <i class="icon ion-plus-round" ></i>
+          </button>
+          <button class="button button-positive" ng-click="updateQuantity(key, item.qty-1, true);">
+            <i class="icon ion-minus-round" ></i>
+          </button>
+          <button class="button button-assertive" ng-click="removeItem(key, true);">
+            <i class="icon ion-close-round"></i>
+          </button>
+        </div>
+      </a>
+      <div style="border-top:3px solid lightgray;" class="row">
+        <label style="margin-right: 10px;" class="item item-input">
+          <input type="number" placeholder="Item Quantity" ng-model="qty">
+        </label>
+        <label style="margin-right: 10px" class="item item-input">
+          <input type="text" placeholder="Item Name" ng-model="item">
+        </label>
+        <a class="button button-outline icon-right ion-checkmark-round button-balanced" ng-click="addItem(qty, item, friend, true); qty = ''; item = '';">Submit</a>
+      </div>
+    </div>
+
+    <div class="list">
+      <div class="item item-divider">
+        {{friend}} owes me:
+      </div>
+      <a ng-repeat="(key,item) in itemsFriendOwes"
+         class="item item-button-right"
+         ng-if="item.to == authedUserInfo.name">
+        {{item.qty}}x {{item.name}}
+        <div class="buttons">
+          <button class="button button-balanced" ng-click="updateQuantity(key, item.qty+1, false);">
+            <i class="icon ion-plus-round" ></i>
+          </button>
+          <button class="button button-positive" ng-click="updateQuantity(key, item.qty-1, false);">
+            <i class="icon ion-minus-round" ></i>
+          </button>
+          <button class="button button-assertive" ng-click="removeItem(key, false);">
+            <i class="icon ion-close-round"></i>
+          </button>
+        </div>
+      </a>
+      <div style="border-top:3px solid lightgray;" class="row">
+        <label style="margin-right: 10px;" class="item item-input">
+          <input type="number" placeholder="Item Quantity" ng-model="userqty">
+        </label>
+        <label style="margin-right: 10px" class="item item-input">
+          <input type="text" placeholder="Item Name" ng-model="useritem">
+        </label>
+        <a class="button button-outline icon-right ion-checkmark-round button-balanced" ng-click="addItem(userqty, useritem, friend, false); userqty=''; useritem='';">Submit</a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
