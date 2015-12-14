@@ -1,8 +1,8 @@
-<ion-view title="U.IO: {{friend}}    (I am: {{authedUserInfo.name}})">
+<ion-view title="Transaction Summary: {{friend}}">
   <ion-content>
     <div class="list">
       <div class="item item-divider">
-        Items that I owe {{friend}}:
+        I owe {{friend}}:
       </div>
       <a ng-repeat="(key,item) in itemsUserOwes"
          class="item item-button-right" ng-if="item.to==friend">
@@ -28,11 +28,11 @@
         </label>
         <a class="button button-outline icon-right ion-checkmark-round button-balanced" ng-click="addItem(userqty, useritem, friend, true)">Submit</a>
       </div>
-      </div>
+    </div>
 
     <div class="list">
       <div class="item item-divider">
-        Items that {{friend}} owes me:
+        {{friend}} owes me:
       </div>
       <a ng-repeat="(key,item) in itemsFriendOwes"
          class="item item-button-right">

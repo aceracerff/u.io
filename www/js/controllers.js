@@ -3,6 +3,7 @@ angular.module('starter.controllers', [])
 .controller('NavCtrl', function($scope, User, $firebaseObject, $state) {
   var ref = new Firebase('https://jordansdemo.firebaseio.com/users');
   var obj = $firebaseObject(ref);
+  $scope.authedUserInfo = User.get();
   $scope.$on('AUTHED-USER-DATA-READY', function () {
     $scope.authedUserInfo = User.get();
     var userExists = false;
