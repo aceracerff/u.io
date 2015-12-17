@@ -49,32 +49,6 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('DashCtrl', function($scope) {})
-
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-})
 
 .controller('MainCtrl', function ($scope, $stateParams, $state, $firebaseObject, User) {
     //we don't want you here if you havent selected a user
@@ -84,13 +58,12 @@ angular.module('starter.controllers', [])
   $scope.friend = $stateParams.friend;
     $scope.authedUserInfo = User.get();
 
-  //Bind the firebase location of our Friend
+  //Bind the firebase location of the Friend
   var FBFriendOwesRef = new Firebase('https://jordansdemo.firebaseio.com/items/' + $scope.friend + "/owes");
   var FBFriendOwesObj = $firebaseObject(FBFriendOwesRef);
   FBFriendOwesObj.$bindTo($scope, "itemsFriendOwes");
 
-  //TODO
-  //Bind the firebase location of the user         NOTE: change the "Jordan" here to the app user
+  //Bind the firebase location of the User
   var FBUserOwesRef = new Firebase('https://jordansdemo.firebaseio.com/items/' + $scope.authedUserInfo.name + "/owes");
   var FBUserOwesObj = $firebaseObject(FBUserOwesRef);
   FBUserOwesObj.$bindTo($scope, "itemsUserOwes");
